@@ -6,7 +6,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Try out to click any movie!</Text>
-      <ListComponent search="marvel"></ListComponent>
+      <ListComponent></ListComponent>
       <StatusBar style="auto" />
     </View>
   );
