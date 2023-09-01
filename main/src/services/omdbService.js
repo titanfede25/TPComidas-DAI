@@ -1,16 +1,19 @@
 import { AxiosClient } from "./axiosClient";
 
 export const getDishes = async () => {
-    return AxiosClient.get(`/recipes/complexSearch?number=20&apiKey=1a1fde2048f044529a1e7e749306db44`)
+    return AxiosClient.get(`/recipes/complexSearch?number=20&apiKey=a0d6581ea80d4c1b84864c7000c508fd`)
         .then((response) => {
-            return response.data;
+            return response.data.results;
         }).catch((error) => {
             throw error;
         });
 }
+/*1a1fde2048f044529a1e7e749306db44 fede */
+/*ca984c7738bf44f48ec9d97649409a8a leo */
+/*a0d6581ea80d4c1b84864c7000c508fd santi1 */
 
-export const getMoviesById = async (id) => {
-    return AxiosClient.get(`/?apikey=3786591b&i=${id}`)
+export const getDish = async (id) => {
+    return AxiosClient.get(`/recipes/${id}/information?apiKey=a0d6581ea80d4c1b84864c7000c508fd`)
         .then((response) => {
             return response.data;
         }).catch((error) => {

@@ -5,7 +5,6 @@ import ListComponent from './src/components/ListComponent/ListComponent';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Try out to click any movie!</Text>
       <ListComponent></ListComponent>
       <StatusBar style="auto" />
     </View>

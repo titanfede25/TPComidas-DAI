@@ -5,6 +5,11 @@ export const ListComponentStyle = StyleSheet.create({
         flex: 1,
         marginTop: StatusBar.currentHeight || 0,
     },
+    Image:{
+        width:  150,
+        height: 150,
+
+    }
 });
 
 
@@ -24,4 +29,5 @@ export const ListChildStyle = StyleSheet.create({
         width: 50,
         height: 50,
     },
+    
 });
