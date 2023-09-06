@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { View, Image, Text} from "react-native";
 import { getDishes, getDish } from "../../services/omdbService";
 import { ListComponentStyle } from "./styles";
+import { StatusBar } from 'expo-status-bar';
+import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
 /*no se ve */
 
-const ListComponent = () => {
+const ListComponent = ({navigation}) => {
     const [dishes, setDishes] = useState([]);
 
     useEffect(() => {
@@ -19,15 +21,20 @@ const ListComponent = () => {
 
     return (
         <View style={ListComponentStyle.container} >
-            {dishes?.map((dish)=>{ 
+            {dishes.map((dish)=>{ 
                 return(
-                    <View key={dish.id} /*/onclick=()*/>
-                        <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
-                        <Text>Nombre: {dish.title}</Text>
+                    <View key={dish.id}>
+                        <TouchableOpacity onPress={()=>{navigation.navigate('Child',{json: dish.id})}}>
+                            <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
+                            <Text>Nombre: {dish.title}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity><Text>Agregar</Text></TouchableOpacity>
+                        <TouchableOpacity><Text>Eliminar</Text></TouchableOpacity>
                     </View>
                 )
             })
         }
+        
         </ View >
     )
 }
@@ -36,3 +43,10 @@ export default ListComponent;
 /*
 <Text>¿Vegano? {response.vegan}</Text>
 <Text>HealthScore: {response.healthScore}</Text>*/
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor:'#012245',
+    },
+    
+  });
