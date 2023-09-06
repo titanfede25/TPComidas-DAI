@@ -19,11 +19,27 @@ const Child = ({route, navigation}) => {
     console.log(dish)
     
     return (
-        <View style={ListComponentStyle.container} >
-        <Text>{json}</Text>
-        </ View >
+        <View key={dish.id}>
+            <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
+            <Text>Nombre: {dish.title}</Text>
+            <Text>Precio: USD{dish.pricePerServing}</Text>
+            <Text>Tiempo en preparación: {dish.readyInMinutes} minutos</Text>
+            <Text>Vegano: {vegan(dish.vegan)}</Text>
+            <Text>HealthScore: {dish.healthScore}</Text>
+            <TouchableOpacity><Text>Agregar</Text></TouchableOpacity>
+        </View>
     )
 }
+
+const vegan = (vegan) => {
+    if(vegan === true){
+        return(<Text>Sí</Text>)
+    }
+    else{
+        return(<Text>No</Text>)
+    }
+}
+
 
 export default Child;
 /*

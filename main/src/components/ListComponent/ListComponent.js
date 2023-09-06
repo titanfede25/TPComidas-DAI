@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, Image, Text} from "react-native";
-import { getDishes, getDish } from "../../services/omdbService";
+import { getDishes, getDish} from "../../services/omdbService";
 import { ListComponentStyle } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
@@ -19,7 +19,7 @@ const ListComponent = ({navigation}) => {
     }, [])
 
 
-    return (
+    return /*<Text>Precio: {getDish(dish.id).then((response) => {return(response.data.pricePerServing)}).catch((error) => {console.log(error);})}</Text>*/    (
         <View style={ListComponentStyle.container} >
             {dishes.map((dish)=>{ 
                 return(
@@ -34,7 +34,6 @@ const ListComponent = ({navigation}) => {
                 )
             })
         }
-        
         </ View >
     )
 }
