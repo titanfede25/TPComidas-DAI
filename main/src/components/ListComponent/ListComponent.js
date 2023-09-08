@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, Image, Text} from "react-native";
-import { getDishes, getDish} from "../../services/omdbService";
+import { getDishes } from "../../services/omdbService";
 import { ListComponentStyle } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
@@ -19,16 +19,16 @@ const ListComponent = ({navigation}) => {
     }, [])
 
 
-    return /*<Text>Precio: {getDish(dish.id).then((response) => {return(response.data.pricePerServing)}).catch((error) => {console.log(error);})}</Text>*/    (
+    return (
         <View style={ListComponentStyle.container} >
-            {dishes.map((dish)=>{ 
+            {dishes.map((dish)=>{
                 return(
                     <View key={dish.id}>
                         <TouchableOpacity onPress={()=>{navigation.navigate('Child',{json: dish.id})}}>
                             <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
                             <Text>Nombre: {dish.title}</Text>
+                            <Text>Precio: {aDish.pricePerServing}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity><Text>Agregar</Text></TouchableOpacity>
                         <TouchableOpacity><Text>Eliminar</Text></TouchableOpacity>
                     </View>
                 )
