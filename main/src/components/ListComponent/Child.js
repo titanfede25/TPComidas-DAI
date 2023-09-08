@@ -4,11 +4,13 @@ import { getDish } from "../../services/omdbService";
 import { ListComponentStyle } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
-/*no se ve */
+import { useContextState } from "../../../ContextState.js";
 
 const Child = ({route, navigation}) => {
     const { json } = route.params;
     const [dish, setDish] = useState([]);
+    const { contextState, setContextState } = useContextState();
+
     useEffect(() => {
         getDish(json).then((response) => {
             setDish(response);
@@ -16,7 +18,6 @@ const Child = ({route, navigation}) => {
             console.log(error);
         });
     }, [])
-    console.log(dish)
     
     return (
         <View key={dish.id}>
@@ -26,7 +27,7 @@ const Child = ({route, navigation}) => {
             <Text>Tiempo en preparación: {dish.readyInMinutes} minutos</Text>
             <Text>Vegano: {vegan(dish.vegan)}</Text>
             <Text>HealthScore: {dish.healthScore}</Text>
-            <TouchableOpacity><Text>Agregar</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" });}}><Text>Agregar</Text></TouchableOpacity>
         </View>
     )
 }
@@ -42,9 +43,7 @@ const vegan = (vegan) => {
 
 
 export default Child;
-/*
-<Text>¿Vegano? {response.vegan}</Text>
-<Text>HealthScore: {response.healthScore}</Text>*/
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,

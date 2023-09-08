@@ -5,13 +5,13 @@ export const initialState = {
 };
 
 export const ActionTypes = {
-  setPrecioTotal: "SET_PRECIOTOTAL"
+  setPrecioTotalPlus: "SET_PRECIOTOTALPLUS"
 };
 
 export const reducer = (state = {}, action) => {
   switch (action.type) {
-    case ActionTypes.setPrecioTotal: {
-      return { ...state, precioTotal: action.newValue };
+    case ActionTypes.setPrecioTotalPlus: {
+      return { ...state, precioTotal: (state.precioTotal??0) + action.newValue };
     }
     default: {
       return state;

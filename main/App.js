@@ -4,19 +4,20 @@ import ListComponent from './src/components/ListComponent/ListComponent';
 import Child from './src/components/ListComponent/Child';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-
-
+import { ContextProvider } from "./ContextState";
 const Stack = createNativeStackNavigator();
+
 export default function App() {
+
   return (
+    <ContextProvider>
     <NavigationContainer>
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-     <Stack.Screen name="Home" component={ListComponent} /> 
-     <Stack.Screen name="Child" component={Child} />
-      </Stack.Navigator>
+    <Stack.Screen name="Home" component={ListComponent} /> 
+    <Stack.Screen name="Child" component={Child} />
+    </Stack.Navigator>
     </NavigationContainer>
-    
+    </ContextProvider>
   );
 }
 

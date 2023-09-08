@@ -4,7 +4,7 @@ import { getDishes } from "../../services/omdbService";
 import { ListComponentStyle } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
-/*no se ve */
+import { useContextState } from "../../../ContextState.js";
 
 const ListComponent = ({navigation}) => {
     const [dishes, setDishes] = useState([]);
@@ -12,7 +12,6 @@ const ListComponent = ({navigation}) => {
     useEffect(() => {
         getDishes().then((response) => {
             setDishes(response);
-            console.log(response)
         }).catch((error) => {
             console.log(error);
         });
@@ -27,7 +26,6 @@ const ListComponent = ({navigation}) => {
                         <TouchableOpacity onPress={()=>{navigation.navigate('Child',{json: dish.id})}}>
                             <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
                             <Text>Nombre: {dish.title}</Text>
-                            <Text>Precio: {aDish.pricePerServing}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity><Text>Eliminar</Text></TouchableOpacity>
                     </View>
