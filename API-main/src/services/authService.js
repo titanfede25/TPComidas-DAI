@@ -33,4 +33,13 @@ export const getRandomString = () => {
     return token;
   };
 
+  export const authenticate = (email, password) => {
+    if (email != "challenge@alkemy.org" || password != "react"){
+      return false;
+    }
+    else{
+      return true
+    }
+  }
+
   
