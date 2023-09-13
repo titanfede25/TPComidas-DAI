@@ -5,6 +5,7 @@ import { ListComponentStyle } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
 import { useContextState } from "../../../ContextState.js";
+import Info from './Info';
 
 const ListComponent = ({navigation}) => {
     const [dishes, setDishes] = useState([]);
@@ -28,10 +29,12 @@ const ListComponent = ({navigation}) => {
                             <Text>Nombre: {dish.title}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity><Text>Eliminar</Text></TouchableOpacity>
+                        
                     </View>
                 )
             })
         }
+        <Info></Info>
         </ View >
     )
 }

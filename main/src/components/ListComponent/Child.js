@@ -5,6 +5,7 @@ import { ListComponentStyle } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
 import { useContextState } from "../../../ContextState.js";
+import Info from './Info';
 
 const Child = ({route, navigation}) => {
     const { json } = route.params;
@@ -28,6 +29,7 @@ const Child = ({route, navigation}) => {
             <Text>Vegano: {vegan(dish.vegan)}</Text>
             <Text>HealthScore: {dish.healthScore}</Text>
             <TouchableOpacity onPress={()=>{setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" });}}><Text>Agregar</Text></TouchableOpacity>
+            <Info></Info>
         </View>
     )
 }

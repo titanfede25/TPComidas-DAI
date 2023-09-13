@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "e39e37c6-f81d-43d8-a593-75188f915bc0",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26418572"
+	},
+	"item": [
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "login auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "GetAll + filtros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/movies?order=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMovie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Imagen\": \"https://pics.filmaffinity.com/league_of_legends_warriors-944428365-mmed.jpg\",\r\n    \"Titulo\": \"League of Legends: Warriors\",\r\n    \"FechaCreacion\": \"2019-12-19T00:00:00.000Z\",\r\n    \"Calificacion\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/movies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"movies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateMovie",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Imagen\": \"https://pics.filmaffinity.com/league_of_legends_warriors-944428365-mmed.jpg\",\r\n    \"Titulo\": \"Warriors\",\r\n    \"FechaCreacion\": \"2019-12-19T00:00:00.000Z\",\r\n    \"Calificacion\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMovie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Imagen\": \"https://pics.filmaffinity.com/league_of_legends_warriors-944428365-mmed.jpg\",\r\n    \"Titulo\": \"Warriors\",\r\n    \"FechaCreacion\": \"2019-12-19T00:00:00.000Z\",\r\n    \"Calificacion\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/movies/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"movies",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMoviesById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/movies/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"movies",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "getAll + filtros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/characters",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCharacter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\":\"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwall.alphacoders.com%2Ftag%2Fwukong-%2528league-of-legends%2529-wallpapers&psig=AOvVaw2BuQekez-saX_deJ-y6T3p&ust=1686404433554000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMDxvZuotv8CFQAAAAAdAAAAABAE\",\r\n    \"name\":\"Wukong\",\r\n    \"age\": 23,\r\n    \"weight\":80,\r\n    \"story\":\"Erase un jugador de lol que jugaba jungla tranquilmente. Era el rey de esa zona, pero un día se encontro un khazix que lo destronó y ahora busca venganza \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/characters",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCharacter",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8KzX1HAluU9EcAl-JAjlO7ceVFHoea0dRi492-fih83oDIZawLcFOo6OzKt9JxEAdGPc&usqp=CAU\",\r\n    \"name\":\"Generalcito Hux\",\r\n    \"age\":\"24\",\r\n    \"weight\":\"85\",\r\n    \"story\":\"Erase un jugador de lol que jugaba jungla tranquilmente. Era el rey de esa zona, pero un día se encontro un khazix que lo destronó y ahora busca venganza. Le gano\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/characters/42",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"characters",
+								"42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCharacter",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8KzX1HAluU9EcAl-JAjlO7ceVFHoea0dRi492-fih83oDIZawLcFOo6OzKt9JxEAdGPc&usqp=CAU\",\r\n    \"name\":\"Generalcito Hux\",\r\n    \"age\":\"24\",\r\n    \"weight\":\"85\",\r\n    \"story\":\"Erase un jugador de lol que jugaba jungla tranquilmente. Era el rey de esa zona, pero un día se encontro un khazix que lo destronó y ahora busca venganza. Le gano\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/characters/49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"characters",
+								"49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCharacterById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8KzX1HAluU9EcAl-JAjlO7ceVFHoea0dRi492-fih83oDIZawLcFOo6OzKt9JxEAdGPc&usqp=CAU\",\r\n    \"name\":\"Generalcito Hux\",\r\n    \"age\":\"24\",\r\n    \"weight\":\"85\",\r\n    \"story\":\"Erase un jugador de lol que jugaba jungla tranquilmente. Era el rey de esa zona, pero un día se encontro un khazix que lo destronó y ahora busca venganza. Le gano\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/characters/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"characters",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
