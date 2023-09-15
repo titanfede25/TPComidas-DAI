@@ -8,13 +8,12 @@ import { useContextState } from "../../../ContextState.js";
 
 const Info = () => {
     const { contextState, setContextState } = useContextState();
-    useEffect(() => {
-     console.log(contextState)
-    }, [])
 
     return (
         <View style={ListComponentStyle.container} >
-        <Text>Precio total: {contextState?.precioTotal}</Text>
+        <Text>Precio total: {contextState?.precioTotal.toFixed(2)}</Text>
+        <Text>Cantidad de platos: {contextState?.cantPlatos}</Text>
+        <Text>HealthScore promedio: {contextState?.healthScore}</Text>
         </ View >
     )
 }

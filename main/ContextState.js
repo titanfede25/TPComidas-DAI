@@ -11,32 +11,32 @@ export const initialState = {
 
 export const ActionTypes = {
   setPrecioTotalPLUS: "SET_PRECIOTOTALPLUS",
-  //setPrecioTotalMINUS: "SET_PRECIOTOTALMINUS",
   setToken: "SET_TOKEN",
-  setCantPlatosPLUS: "SET_PLATOS",
-  setCantPlatosVeganosPLUS: "SET_CANTPLATOSVEGANOS",
-  setCantPlatosNoVeganosPLUS: "SET_CANTPLATOSNOVEGANOS"
+  setCantPlatosPLUS: "SET_CANTPLATOSPLUS",
+  setCantPlatosVeganosPLUS: "SET_CANTPLATOSVEGANOSPLUS",
+  setCantPlatosNoVeganosPLUS: "SET_CANTPLATOSNOVEGANOSPLUS",
+  setHealthScorePLUS: "SET_HEALTHSCOREPLUS"
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.setPrecioTotalPLUS: {
-      return { ...state, precioTotal: state.precioTotal + action.newValue };
+      return { ...state, precioTotal: state.precioTotal + action.newValue};
     }
-    /*case ActionTypes.setPrecioTotalMINUS: {
-      return { ...state, precioTotal: state.precioTotal + action.newValue };
-    }*/
     case ActionTypes.setToken: {
       return { ...state, token: action.newValue };
     }
     case ActionTypes.setCantPlatosPLUS: {
-      return { ...state, cantPlatos: state.cantPlatos + action.newValue };
+      return { ...state, cantPlatos: state.cantPlatos + 1 };
     }
     case ActionTypes.setCantPlatosVeganosPLUS: {
-      return { ...state, cantPlatosVeganos: state.cantPlatosVeganos + action.newValue };
+      return { ...state, cantPlatosVeganos: state.cantPlatosVeganos + 1 };
     }
     case ActionTypes.setCantPlatosNoVeganosPLUS: {
-      return { ...state, cantPlatosNoVeganos: state.cantPlatosNoVeganos + action.newValue };
+      return { ...state, cantPlatosNoVeganos: state.cantPlatosNoVeganos + 1 };
+    }
+    case ActionTypes.setHealthScorePLUS: {
+      return { ...state, healthScore: (state.healthScore * (state.cantPlatos-1) / state.cantPlatos) + (action.newValue / state.cantPlatos)};
     }
     default: {
       return state;
