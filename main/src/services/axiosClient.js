@@ -4,6 +4,10 @@ export const AxiosClient = axios.create({
     baseURL: 'https://api.spoonacular.com'
 })
 
+export const AlkemyClient = axios.create({
+    baseURL: 'http://challenge-react.alkemy.org'
+})
+
 /*
 
 https://api.spoonacular.com/recipes/716423/information?apiKey=1a1fde2048f044529a1e7e749306db44 fede

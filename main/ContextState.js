@@ -1,17 +1,42 @@
 import React, { useContext } from "react";
 
 export const initialState = {
-  precioTotal: 0
+  precioTotal: 0,
+  token: "",
+  healthScore: 0,
+  cantPlatos: 0,
+  cantPlatosVeganos: 0,
+  cantPlatosNoVegano: 0
 };
 
 export const ActionTypes = {
-  setPrecioTotalPlus: "SET_PRECIOTOTALPLUS"
+  setPrecioTotalPLUS: "SET_PRECIOTOTALPLUS",
+  //setPrecioTotalMINUS: "SET_PRECIOTOTALMINUS",
+  setToken: "SET_TOKEN",
+  setCantPlatosPLUS: "SET_PLATOS",
+  setCantPlatosVeganosPLUS: "SET_CANTPLATOSVEGANOS",
+  setCantPlatosNoVeganosPLUS: "SET_CANTPLATOSNOVEGANOS"
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.setPrecioTotalPlus: {
+    case ActionTypes.setPrecioTotalPLUS: {
       return { ...state, precioTotal: state.precioTotal + action.newValue };
+    }
+    /*case ActionTypes.setPrecioTotalMINUS: {
+      return { ...state, precioTotal: state.precioTotal + action.newValue };
+    }*/
+    case ActionTypes.setToken: {
+      return { ...state, token: action.newValue };
+    }
+    case ActionTypes.setCantPlatosPLUS: {
+      return { ...state, cantPlatos: state.cantPlatos + action.newValue };
+    }
+    case ActionTypes.setCantPlatosVeganosPLUS: {
+      return { ...state, cantPlatosVeganos: state.cantPlatosVeganos + action.newValue };
+    }
+    case ActionTypes.setCantPlatosNoVeganosPLUS: {
+      return { ...state, cantPlatosNoVeganos: state.cantPlatosNoVeganos + action.newValue };
     }
     default: {
       return state;
