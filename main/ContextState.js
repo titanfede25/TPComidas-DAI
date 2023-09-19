@@ -6,7 +6,8 @@ export const initialState = {
   healthScore: 0,
   cantPlatos: 0,
   cantPlatosVeganos: 0,
-  cantPlatosNoVegano: 0
+  cantPlatosNoVeganos: 0,
+  platos: []
 };
 
 export const ActionTypes = {
@@ -15,7 +16,8 @@ export const ActionTypes = {
   setCantPlatosPLUS: "SET_CANTPLATOSPLUS",
   setCantPlatosVeganosPLUS: "SET_CANTPLATOSVEGANOSPLUS",
   setCantPlatosNoVeganosPLUS: "SET_CANTPLATOSNOVEGANOSPLUS",
-  setHealthScorePLUS: "SET_HEALTHSCOREPLUS"
+  setHealthScorePLUS: "SET_HEALTHSCOREPLUS",
+  setPlatosPLUS: "SET_PLATOSPLUS"
 };
 
 export const reducer = (state = initialState, action) => {
@@ -37,6 +39,9 @@ export const reducer = (state = initialState, action) => {
     }
     case ActionTypes.setHealthScorePLUS: {
       return { ...state, healthScore: (state.healthScore * (state.cantPlatos-1) / state.cantPlatos) + (action.newValue / state.cantPlatos)};
+    }
+    case ActionTypes.setPlatosPLUS: {
+      return { ...state, platos: [...state.platos, action.newValue]};
     }
     default: {
       return state;

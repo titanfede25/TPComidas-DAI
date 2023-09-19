@@ -11,17 +11,32 @@ const Info = () => {
 
     return (
         <View style={ListComponentStyle.container} >
+        <Text>.</Text>
+        <Text>.</Text>
+        <Text>.</Text>
         <Text>Precio total: {contextState?.precioTotal.toFixed(2)}</Text>
         <Text>Cantidad de platos: {contextState?.cantPlatos}</Text>
+        <Text>Cantidad de platos veganos (máximo 2): {contextState?.cantPlatosVeganos}</Text>
+        <Text>Cantidad de platos no veganos (máximo 2): {contextState?.cantPlatosNoVeganos}</Text>
         <Text>HealthScore promedio: {contextState?.healthScore}</Text>
+        <Text>.</Text>
+        <Text>Platos seleccionados</Text>
+        {contextState?.platos.map((dish)=>{
+          return(<Text>{dish.title}. {vegan(dish.vegan)}</Text>)         
+        })}
         </ View >
     )
 }
 
 export default Info;
-/*
-<Text>¿Vegano? {response.vegan}</Text>
-<Text>HealthScore: {response.healthScore}</Text>*/
+const vegan = (vegan) => {
+  if(vegan === true){
+      return(<Text>Vegano.</Text>)
+  }
+  else{
+      return(<Text>No vegano.</Text>)
+  }
+}
 const styles = StyleSheet.create({
     container: {
       flex: 1,

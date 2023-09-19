@@ -22,14 +22,42 @@ const Child = ({route, navigation}) => {
     
     return (
         <View key={dish.id}>
-             <TouchableOpacity onPress={()=>{navigation.goBack();}}><Text>volver</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{navigation.goBack();}}><Text>volver</Text></TouchableOpacity>
             <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
             <Text>Nombre: {dish.title}</Text>
             <Text>Precio: USD{dish.pricePerServing}</Text>
             <Text>Tiempo en preparación: {dish.readyInMinutes} minutos</Text>
             <Text>Vegano: {vegan(dish.vegan)}</Text>
             <Text>HealthScore: {dish.healthScore}</Text>
-            <TouchableOpacity onPress={()=>{setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" }); setContextState({type: "SET_CANTPLATOSPLUS" }); setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); navigation.goBack();}}><Text>Agregar</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{
+                if(dish.vegan){
+                    if(contextState.cantPlatosVeganos < 2){
+                        setContextState({ type: "SET_CANTPLATOSVEGANOSPLUS" }); 
+                        setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" }); 
+                        setContextState({type: "SET_CANTPLATOSPLUS" }); 
+                        setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); 
+                        setContextState({ newValue: dish, type: "SET_PLATOSPLUS" }); 
+                        navigation.goBack();
+                    }
+                    else{
+                        navigation.goBack();
+                    }
+                }
+                else{
+                    if (contextState.cantPlatosNoVeganos < 2){
+                        setContextState({ type: "SET_CANTPLATOSNOVEGANOSPLUS" }); 
+                        setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" }); 
+                        setContextState({type: "SET_CANTPLATOSPLUS" }); 
+                        setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); 
+                        setContextState({ newValue: dish, type: "SET_PLATOSPLUS" }); 
+                        navigation.goBack();
+                    }
+                    else{
+                        navigation.goBack();
+                    }
+                }}}>
+                <Text>Agregar</Text>
+            </TouchableOpacity>
             <Info></Info>
         </View>
     )
