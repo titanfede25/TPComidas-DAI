@@ -40,7 +40,7 @@ const vegan = (vegan) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor:'#012245',
+      backgroundColor:'#fff0db',
     },
     
   });

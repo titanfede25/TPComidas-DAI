@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { getToken } from "../../services/omdbService";
-import { useContextState } from "../../../ContextState.js";
+import { css } from "@emotion/react";
+import { PulseLoader} from "react-spinners";
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('challenge@alkemy.org');
   const [password, setPassword] = useState('react');
-  const {contextState, setContextState} = useContextState();
-  const [warning, setwarning] = useState('');
+  const [warning, setWarning] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async() => {
     if(email.length === 0 || password.length === 0){
-        setwarning("Usuario o Contraseña vacios, llenar para continuar")
+        setWarning("Usuario o Contraseña vacios, llenar para continuar")
     }
-    else if (email != "challenge@alkemy.org" || password != "react") 
+    else if (email !== "challenge@alkemy.org" || password !== "react") 
     {
-        setwarning("Usuario o Contraseña incorrectos")
+        setWarning("Usuario o Contraseña incorrectos")
     }
     else{
-        const token = await getToken(email, password);
-        setContextState({ newValue: token.token, type: "SET_TOKEN" });
-        navigation.navigate('ListComponent');
+        setLoading(true);
+        // Aquí puedes agregar tu lógica para obtener el token
+        setTimeout(() => {
+          setLoading(false);
+          navigation.navigate('ListComponent');
+        }, 2000);
     }
   };
 
@@ -41,9 +44,20 @@ const LoginScreen = ({navigation}) => {
         value={password}
       />
       <Text style={styles.warning}>{warning}</Text>
+
+      <Text>{`\n`}</Text>
+
+      <View css={css`display: flex; justify-content: center; align-items: center; margin-top: 20px;`}>
+        <PulseLoader color={"#44dfc5"} loading={loading} size={10} />
+      </View>
+      
+      <Text>{`\n`}</Text>
+      
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Iniciar sesión</Text>
       </TouchableOpacity>
+
+      
     </View>
   );
 };
@@ -53,7 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff0db',
   },
   title: {
     fontSize: 24,
@@ -64,13 +78,14 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 40,
     borderColor: 'gray',
+    backgroundColor: 'white',
     borderWidth: 1,
     borderRadius: 5,
     marginBottom: 10,
     padding: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#6fa042',
     padding: 10,
     borderRadius: 5,
   },
@@ -81,6 +96,7 @@ const styles = StyleSheet.create({
   warning:{
     color: 'crimson'
   }
+  
 });
 
 export default LoginScreen;
