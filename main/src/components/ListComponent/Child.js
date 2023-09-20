@@ -30,32 +30,38 @@ const Child = ({route, navigation}) => {
             <Text>Vegano: {vegan(dish.vegan)}</Text>
             <Text>HealthScore: {dish.healthScore}</Text>
             <TouchableOpacity onPress={()=>{
-                if(dish.vegan){
-                    if(contextState.cantPlatosVeganos < 2){
-                        setContextState({ type: "SET_CANTPLATOSVEGANOSPLUS" }); 
-                        setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" }); 
-                        setContextState({type: "SET_CANTPLATOSPLUS" }); 
-                        setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); 
-                        setContextState({ newValue: dish, type: "SET_PLATOSPLUS" }); 
-                        navigation.goBack();
-                    }
-                    else{
-                        navigation.goBack();
-                    }
+                if(IsOnMenu(dish, contextState.platos)){
+                    navigation.goBack();
                 }
                 else{
-                    if (contextState.cantPlatosNoVeganos < 2){
-                        setContextState({ type: "SET_CANTPLATOSNOVEGANOSPLUS" }); 
-                        setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" }); 
-                        setContextState({type: "SET_CANTPLATOSPLUS" }); 
-                        setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); 
-                        setContextState({ newValue: dish, type: "SET_PLATOSPLUS" }); 
-                        navigation.goBack();
+                    if(dish.vegan){
+                        if(contextState.cantPlatosVeganos < 2){
+                            setContextState({ type: "SET_CANTPLATOSVEGANOSPLUS" }); 
+                            setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" }); 
+                            setContextState({type: "SET_CANTPLATOSPLUS" }); 
+                            setContextState({ newValue: dish, type: "SET_PLATOSPLUS" }); 
+                            setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); 
+                            navigation.goBack();
+                        }
+                        else{
+                            navigation.goBack();
+                        }
                     }
                     else{
-                        navigation.goBack();
+                        if (contextState.cantPlatosNoVeganos < 2){
+                            setContextState({ type: "SET_CANTPLATOSNOVEGANOSPLUS" }); 
+                            setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALPLUS" }); 
+                            setContextState({type: "SET_CANTPLATOSPLUS" }); 
+                            setContextState({ newValue: dish, type: "SET_PLATOSPLUS" }); 
+                            setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); 
+                            navigation.goBack();
+                        }
+                        else{
+                            navigation.goBack();
+                        }
                     }
-                }}}>
+                } 
+                }}>
                 <Text>Agregar</Text>
             </TouchableOpacity>
             <Info></Info>
@@ -70,6 +76,16 @@ const vegan = (vegan) => {
     else{
         return(<Text>No</Text>)
     }
+}
+
+const IsOnMenu = (dish, platos) => {
+    let x = 0;
+    platos.map((plato)=>{
+        if(plato.title === dish.title){
+            x++;
+        }
+    })
+    return x>0;
 }
 
 

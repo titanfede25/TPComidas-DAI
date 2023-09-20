@@ -23,7 +23,7 @@ const ListComponent = ({ navigation }) => {
 
 
     return (
-        <View style={ListComponentStyle.container} >
+        <View style={ListComponentStyle.container}>
             {loading ? (
                 <View style={styles.loadingContainer}>
                     <Text style={styles.loadingText}>Loading...</Text>
@@ -45,6 +45,18 @@ const ListComponent = ({ navigation }) => {
                     <Info></Info>
                 </>
             )}
+            {dishes.map((dish)=>{
+                return(
+                    <View key={dish.id}>
+                        <TouchableOpacity onPress={()=>{navigation.navigate('Child',{json: dish.id})}}>
+                            <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
+                            <Text>Nombre: {dish.title}</Text>
+                        </TouchableOpacity>
+                    </View>
+                )
+            })
+        }
+        <Info></Info>
         </ View >
     )
 }
