@@ -28,8 +28,6 @@ const ListComponent = ({navigation}) => {
                             <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
                             <Text>Nombre: {dish.title}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity><Text>Eliminar</Text></TouchableOpacity>
-                        
                     </View>
                 )
             })

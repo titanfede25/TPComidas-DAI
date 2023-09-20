@@ -12,12 +12,18 @@ export const initialState = {
 
 export const ActionTypes = {
   setPrecioTotalPLUS: "SET_PRECIOTOTALPLUS",
+  setPrecioTotalMINUS: "SET_PRECIOTOTALMINUS",
   setToken: "SET_TOKEN",
   setCantPlatosPLUS: "SET_CANTPLATOSPLUS",
+  setCantPlatosMINUS: "SET_CANTPLATOSMINUS",
   setCantPlatosVeganosPLUS: "SET_CANTPLATOSVEGANOSPLUS",
+  setCantPlatosVeganosMINUS: "SET_CANTPLATOSVEGANOSMINUS",
   setCantPlatosNoVeganosPLUS: "SET_CANTPLATOSNOVEGANOSPLUS",
+  setCantPlatosNoVeganosMINUS: "SET_CANTPLATOSNOVEGANOSMINUS",
   setHealthScorePLUS: "SET_HEALTHSCOREPLUS",
-  setPlatosPLUS: "SET_PLATOSPLUS"
+  setHealthScoreMINUS: "SET_HEALTHSCOREMINUS",
+  setPlatosPLUS: "SET_PLATOSPLUS",
+  setPlatosMINUS: "SET_PLATOSMINUS"
 };
 
 export const reducer = (state = initialState, action) => {
@@ -25,23 +31,42 @@ export const reducer = (state = initialState, action) => {
     case ActionTypes.setPrecioTotalPLUS: {
       return { ...state, precioTotal: state.precioTotal + action.newValue};
     }
+    case ActionTypes.setPrecioTotalMINUS: {
+      return { ...state, precioTotal: state.precioTotal - action.newValue};
+    }
     case ActionTypes.setToken: {
       return { ...state, token: action.newValue };
     }
     case ActionTypes.setCantPlatosPLUS: {
       return { ...state, cantPlatos: state.cantPlatos + 1 };
     }
+    case ActionTypes.setCantPlatosMINUS: {
+      return { ...state, cantPlatos: state.cantPlatos - 1 };
+    }
     case ActionTypes.setCantPlatosVeganosPLUS: {
       return { ...state, cantPlatosVeganos: state.cantPlatosVeganos + 1 };
+    }
+    case ActionTypes.setCantPlatosVeganosMINUS: {
+      return { ...state, cantPlatosVeganos: state.cantPlatosVeganos - 1 };
     }
     case ActionTypes.setCantPlatosNoVeganosPLUS: {
       return { ...state, cantPlatosNoVeganos: state.cantPlatosNoVeganos + 1 };
     }
-    case ActionTypes.setHealthScorePLUS: {
-      return { ...state, healthScore: (state.healthScore * (state.cantPlatos-1) / state.cantPlatos) + (action.newValue / state.cantPlatos)};
+    case ActionTypes.setCantPlatosNoVeganosMINUS: {
+      return { ...state, cantPlatosNoVeganos: state.cantPlatosNoVeganos - 1 };
     }
     case ActionTypes.setPlatosPLUS: {
       return { ...state, platos: [...state.platos, action.newValue]};
+    }
+    case ActionTypes.setPlatosMINUS: {
+      const nuevosPlatos = state.platos.filter(plato => plato.title !== action.newValue);
+      return { ...state, platos: nuevosPlatos };
+    }
+    case ActionTypes.setHealthScorePLUS: {
+      return { ...state, healthScore:  (state.healthScore * (state.cantPlatos-1) / state.cantPlatos) + (action.newValue / state.cantPlatos)};
+    }
+    case ActionTypes.setHealthScoreMINUS: {
+      return { ...state, healthScore: ((state.healthScore * (initialState.cantPlatos + 1)) - action.newValue )/(initialState.cantPlatos)};
     }
     default: {
       return state;
