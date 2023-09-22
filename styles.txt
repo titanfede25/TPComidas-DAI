@@ -1,0 +1,47 @@
+import { StyleSheet, StatusBar } from 'react-native';
+
+export const ListComponentStyle = StyleSheet.create({
+    container: {
+        flex: 1,
+        marginTop: StatusBar.currentHeight || 0,
+        backgroundColor:'#fff0db',
+        overflow: scroll,
+    },
+    Image:{
+        width:  150,
+        height: 150,
+        alignSelf: 'center',
+
+    },
+    Dish:{
+        fontSize: 20,
+       textAlign: 'center',
+       fontWeight: 'bold',
+    },
+    Eliminar:{
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'crimson',
+    }
+});
+
+
+export const ListChildStyle = StyleSheet.create({
+    item: {
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    title: {
+        fontSize: 32,
+        marginLeft: 16
+    },
+    tinyLogo: {
+        width: 50,
+        height: 50,
+    },
+    
+});
