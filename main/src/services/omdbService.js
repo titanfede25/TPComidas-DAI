@@ -20,6 +20,16 @@ export const getDish = async (id) => {
             throw error;
         });
 }
+
+export const getDishByTitle = async (title) => {
+    return AxiosClient.get(`/recipes/information?number=20&apiKey=a0d6581ea80d4c1b84864c7000c508fd&query=${title}`)
+        .then((response) => {
+            return response.data;
+        }).catch((error) => {
+            throw error;
+        });
+}
+
 export const getToken = async (email, password) => {
     const data = {
         email: email,

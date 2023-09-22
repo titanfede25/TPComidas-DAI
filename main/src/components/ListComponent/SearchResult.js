@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { View, Image, Text } from "react-native";
-import { getDishes } from "../../services/omdbService";
+import { getDishByTitle } from "../../services/omdbService";
 import { ListComponentStyle } from "./styles";
 import { TouchableOpacity, ScrollView, StyleSheet } from "react-native";
+import { useContextState } from "../../../ContextState.js";
 import Info from './Info';
-import MenuSearch from './MenuSearch';
 
 
-const ListComponent = ({ navigation }) => {
+const SearchResult = ({ navigation }) => {
+    const { dish } = route.params;
     const [dishes, setDishes] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getDishes().then((response) => {
+        getDishByTitle(dish).then((response) => {
             setDishes(response);
             setLoading(false);
         }).catch((error) => {
@@ -23,7 +24,6 @@ const ListComponent = ({ navigation }) => {
 
     return (
         <View style={ListComponentStyle.container}>
-            <MenuSearch></MenuSearch>
             {loading ? (
                 <View style={styles.loadingContainer}>
                     <Text style={styles.loadingText}>Loading...</Text>
@@ -41,14 +41,26 @@ const ListComponent = ({ navigation }) => {
                             </View>
                         )
                     })}
+                    <Info></Info>
                 </>
             )}
+            {dishes.map((dish)=>{
+                return(
+                    <View key={dish.id}>
+                        <TouchableOpacity onPress={()=>{navigation.navigate('Child',{json: dish.id})}}>
+                            <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
+                            <Text>Nombre: {dish.title}</Text>
+                        </TouchableOpacity>
+                    </View>
+                )
+            })
+        }
         <Info></Info>
         </ View >
     )
 }
 
-export default ListComponent;
+export default SearchResult;
 /*
 <Text>¿Vegano? {response.vegan}</Text>
 <Text>HealthScore: {response.healthScore}</Text>*/

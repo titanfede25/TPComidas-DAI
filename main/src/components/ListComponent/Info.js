@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
 import { View, Image, Text, TouchableOpacityBase} from "react-native";
-import { getDishes } from "../../services/omdbService";
 import { ListComponentStyle } from "./styles";
-import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
 import { useContextState } from "../../../ContextState.js";
 
@@ -22,10 +19,10 @@ const Info = () => {
         <Text>.</Text>
         <Text>Platos seleccionados</Text>
         {contextState?.platos.map((dish)=>{
-          return(<Text>{dish.title}. {vegan(dish.vegan)} <TouchableOpacity onPress={()=>{
+          return(<Text>{dish.title}. {vegan(dish.vegan)} ${dish.pricePerServing} <TouchableOpacity onPress={()=>{
             setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALMINUS" }); 
             setContextState({type: "SET_CANTPLATOSMINUS" }); 
-            setContextState({ newValue: dish, type: "SET_PLATOSMINUS" }); 
+            setContextState({ newValue: dish.title, type: "SET_PLATOSMINUS" }); 
             if (dish.vegan){
               setContextState({ type: "SET_CANTPLATOSVEGANOSMINUS" }); 
             }

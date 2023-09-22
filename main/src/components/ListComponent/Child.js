@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { View, Image, Text} from "react-native";
 import { getDish } from "../../services/omdbService";
 import { ListComponentStyle } from "./styles";
-import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
 import { useContextState } from "../../../ContextState.js";
 import Info from './Info';
