@@ -30,7 +30,7 @@ const Child = ({route, navigation}) => {
             <Text>HealthScore: {dish.healthScore}</Text>
             <TouchableOpacity onPress={()=>{
                 if(IsOnMenu(dish, contextState.platos)){
-                    navigation.goBack();
+                    navigation.navigate('ListComponent');
                 }
                 else{
                     if(dish.vegan){
@@ -40,10 +40,10 @@ const Child = ({route, navigation}) => {
                             setContextState({type: "SET_CANTPLATOSPLUS" }); 
                             setContextState({ newValue: dish, type: "SET_PLATOSPLUS" }); 
                             setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); 
-                            navigation.goBack();
+                            navigation.navigate('ListComponent');
                         }
                         else{
-                            navigation.goBack();
+                            navigation.navigate('ListComponent');
                         }
                     }
                     else{
@@ -53,10 +53,10 @@ const Child = ({route, navigation}) => {
                             setContextState({type: "SET_CANTPLATOSPLUS" }); 
                             setContextState({ newValue: dish, type: "SET_PLATOSPLUS" }); 
                             setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREPLUS" }); 
-                            navigation.goBack();
+                            navigation.navigate('ListComponent');
                         }
                         else{
-                            navigation.goBack();
+                            navigation.navigate('ListComponent');
                         }
                     }
                 } 

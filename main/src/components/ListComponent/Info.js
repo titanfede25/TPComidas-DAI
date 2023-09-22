@@ -19,7 +19,7 @@ const Info = () => {
         <Text>.</Text>
         <Text>Platos seleccionados</Text>
         {contextState?.platos.map((dish)=>{
-          return(<Text>{dish.title}. {vegan(dish.vegan)} ${dish.pricePerServing} <TouchableOpacity onPress={()=>{
+          return(<Text key={dish.id}>{dish.title}. {vegan(dish.vegan)} ${dish.pricePerServing} <TouchableOpacity onPress={()=>{
             setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALMINUS" }); 
             setContextState({type: "SET_CANTPLATOSMINUS" }); 
             setContextState({ newValue: dish.title, type: "SET_PLATOSMINUS" }); 
@@ -30,7 +30,7 @@ const Info = () => {
               setContextState({ type: "SET_CANTPLATOSNOVEGANOSMINUS" }); 
             }
             setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREMINUS" }); 
-          }}>Eliminar</TouchableOpacity></Text>)         
+          }}><Text>Eliminar</Text></TouchableOpacity></Text>)         
         })}
         </ View >
     )

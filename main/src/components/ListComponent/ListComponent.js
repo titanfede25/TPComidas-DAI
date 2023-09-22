@@ -23,7 +23,7 @@ const ListComponent = ({ navigation }) => {
 
     return (
         <View style={ListComponentStyle.container}>
-            <MenuSearch></MenuSearch>
+            <MenuSearch navigation={navigation}></MenuSearch>
             {loading ? (
                 <View style={styles.loadingContainer}>
                     <Text style={styles.loadingText}>Loading...</Text>

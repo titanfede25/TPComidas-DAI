@@ -7,13 +7,13 @@ import { useContextState } from "../../../ContextState.js";
 import Info from './Info';
 
 
-const SearchResult = ({ navigation }) => {
-    const { dish } = route.params;
+const SearchResult = ({ route, navigation }) => {
+    const { json } = route.params;
     const [dishes, setDishes] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getDishByTitle(dish).then((response) => {
+        getDishByTitle(json).then((response) => {
             setDishes(response);
             setLoading(false);
         }).catch((error) => {
@@ -44,18 +44,6 @@ const SearchResult = ({ navigation }) => {
                     <Info></Info>
                 </>
             )}
-            {dishes.map((dish)=>{
-                return(
-                    <View key={dish.id}>
-                        <TouchableOpacity onPress={()=>{navigation.navigate('Child',{json: dish.id})}}>
-                            <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
-                            <Text>Nombre: {dish.title}</Text>
-                        </TouchableOpacity>
-                    </View>
-                )
-            })
-        }
-        <Info></Info>
         </ View >
     )
 }

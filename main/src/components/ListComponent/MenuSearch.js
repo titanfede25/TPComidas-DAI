@@ -4,7 +4,7 @@ import { getDishByTitle } from "../../services/omdbService";
 import { TouchableOpacity,ScrollView, StyleSheet } from "react-native";
 import { useContextState } from "../../../ContextState.js";
 
-const MenuSearch = () => {
+const MenuSearch = ({navigation}) => {
     const [dish, setDish] = useState('');
     const [warning, setWarning] = useState('');
 

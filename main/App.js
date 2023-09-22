@@ -10,7 +10,6 @@ import { ContextProvider } from "./ContextState";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   return (
     <ContextProvider>
       <NavigationContainer>
@@ -23,13 +22,4 @@ export default function App() {
       </NavigationContainer>
     </ContextProvider>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
