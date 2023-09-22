@@ -48,7 +48,7 @@ const LoginScreen = ({navigation}) => {
       <Text>{`\n`}</Text>
 
       <View css={css`display: flex; justify-content: center; align-items: center; margin-top: 20px;`}>
-        <PulseLoader color={"#44dfc5"} loading={loading} size={10} />
+        <PulseLoader color={"#6fa042"} loading={loading} size={10} />
       </View>
       
       <Text>{`\n`}</Text>
