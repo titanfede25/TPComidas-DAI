@@ -19,15 +19,18 @@ const MenuSearch = ({navigation}) => {
 
     return (
         <View>
-            <TextInput
+            <View style={styles.ViewcitaEnLinea}>
+            <TextInput style={styles.TextInput}
                 placeholder="Ingresa aqui el plato que quieras buscar"
                 onChangeText={(text) => setDish(text)}
                 value={dish}
             />
-            <TouchableOpacity onPress={search}>
-                <Text>Buscar</Text>
+            <TouchableOpacity style={styles.button} onPress={search}>
+                <Text style={styles.buttonText}>Buscar</Text>
             </TouchableOpacity>
-            <Text>{warning}</Text>
+            </View>
+            <Text style={styles.Warning}>{warning}</Text>
+            <br></br>
         </ View >
     )
 }
@@ -37,5 +40,30 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor:'#fff0db',
     },
-    
+    button: {
+        backgroundColor: '#6fa042',
+        padding: 10,
+        width: '5%',
+      },
+      buttonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+      TextInput:{
+        width: '95%',
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: 'gray',
+
+      },
+      ViewcitaEnLinea:{
+        flexDirection: "row",
+      },
+      Warning:{
+        fontSize: 20,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'crimson',
+      }
   });

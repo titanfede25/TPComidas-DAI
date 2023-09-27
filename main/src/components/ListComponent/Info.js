@@ -8,16 +8,23 @@ const Info = () => {
 
     return (
         <View style={ListComponentStyle.container} >
-        <Text>.</Text>
-        <Text>.</Text>
-        <Text>.</Text>
-        <Text>Precio total: {contextState?.precioTotal.toFixed(2)}</Text>
-        <Text>Cantidad de platos: {contextState?.cantPlatos}</Text>
-        <Text>Cantidad de platos veganos (máximo 2): {contextState?.cantPlatosVeganos}</Text>
-        <Text>Cantidad de platos no veganos (máximo 2): {contextState?.cantPlatosNoVeganos}</Text>
-        <Text>HealthScore promedio: {contextState?.healthScore}</Text>
-        <Text>.</Text>
-        <Text>Platos seleccionados</Text>
+        
+        <Text style={styles.TituloFooter}>Precio total: <Text style= {styles.Precio}>{contextState?.precioTotal.toFixed(2)}</Text></Text>
+        <Text style={styles.TituloFooter}>Cantidad de platos: {contextState?.cantPlatos}</Text>
+
+        <View style={styles.ViewcitaEnLinea}>
+        <Text style={styles.TituloFooter}>Cantidad de platos</Text><Text style={styles.Vegano}> veganos</Text><Text style={styles.TituloFooterConSubrayado}>(máximo 2)</Text><Text style={styles.TituloFooter}>: {contextState?.cantPlatosVeganos}</Text>
+        </View>
+        
+        <View style={styles.ViewcitaEnLinea}>
+        <Text style={styles.TituloFooter}>Cantidad de platos</Text><Text style={styles.NoVegano}> no veganos </Text><Text style={styles.TituloFooterConSubrayado}>(máximo 2)</Text><Text style={styles.TituloFooter}>: {contextState?.cantPlatosNoVeganos}</Text>
+        </View>
+
+        <View style={styles.ViewcitaEnLinea}>
+        <Text style={styles.HealthScore}>HealthScore </Text><Text style={styles.TituloFooter}>promedio: {contextState?.healthScore}</Text>
+        </View>
+
+        <Text style={styles.TituloFooter}>Platos seleccionados: </Text>
         {contextState?.platos.map((dish)=>{
           return(<Text key={dish.id}>{dish.title}. {vegan(dish.vegan)} ${dish.pricePerServing} <TouchableOpacity onPress={()=>{
             setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALMINUS" }); 
@@ -46,9 +53,39 @@ const vegan = (vegan) => {
   }
 }
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor:'#fff0db',
-    },
-    
-  });
+  container: {
+    flex: 1,
+    backgroundColor:'#fff0db',
+  },
+  TituloFooter:{
+    fontWeight: 'bold',
+    fontSize: 20,  
+},
+TituloFooterConSubrayado:{
+  fontWeight: 'bold',
+  fontSize: 20,
+  textDecorationLine: "underline",
+},
+Precio:{
+  color: '#6fa042',
+},
+Vegano:{
+  color: '#6fa042',
+  fontWeight: 'bold',
+  fontSize: 20,
+},
+NoVegano:{
+  color: '#85461e',
+  fontWeight: 'bold',
+  fontSize: 20,
+},
+ViewcitaEnLinea:{
+  flexDirection: "row",
+},
+HealthScore: {
+  color: '#a0d150',
+  fontWeight: 'bold',
+  fontSize: 20, 
+},
+  
+});

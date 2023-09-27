@@ -32,11 +32,17 @@ const ListComponent = ({ navigation }) => {
                 <>
                     {dishes.map((dish) => {
                         return (
-                            <View key={dish.id}>
+                            <View key={dish.id} style={styles.container}>
+                                <Text style={ListComponentStyle.Dish}>{dish.title}</Text>
+                                <br></br>
                                 <TouchableOpacity onPress={() => { navigation.navigate('Child', { json: dish.id }) }}>
                                     <Image style={ListComponentStyle.Image} source={{ uri: dish.image }} />
-                                    <Text>Nombre: {dish.title}</Text>
+                                    
                                 </TouchableOpacity>
+                                <br></br>
+                                <TouchableOpacity><Text style={ListComponentStyle.Eliminar}>Eliminar</Text></TouchableOpacity>
+                                <br></br><br></br>
+
 
                             </View>
                         )
@@ -54,7 +60,7 @@ export default ListComponent;
 <Text>HealthScore: {response.healthScore}</Text>*/
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        
         backgroundColor: '#fff0db',
     },
     loadingContainer: {
@@ -67,5 +73,18 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
+    Titulo:{
+        textAlign: "center",
+        fontWeight: 'bold',
+        fontSize: 50,
+        textDecorationLine: "underline",
+    },
+    PrecioTotal:{
+        fontWeight: 'bold',
+        textDecorationLine: "underline",
+        fontSize: 10,  
+    }
 });
+
+
 

@@ -32,10 +32,13 @@ const SearchResult = ({ route, navigation }) => {
                 <>
                     {dishes.map((dish) => {
                         return (
+                            
                             <View key={dish.id}>
+                                
+                                <Text style={ListComponentStyle.Dish}>{dish.title}</Text>
+                                <br></br>
                                 <TouchableOpacity onPress={() => { navigation.navigate('Child', { json: dish.id }) }}>
-                                    <Image style={ListComponentStyle.Image} source={{ uri: dish.image }} />
-                                    <Text>Nombre: {dish.title}</Text>
+                                    <Image style={ListComponentStyle.Image} source={{ uri: dish.image }} />   
                                 </TouchableOpacity>
 
                             </View>

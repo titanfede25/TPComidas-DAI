@@ -2,13 +2,28 @@ import { StyleSheet, StatusBar } from 'react-native';
 
 export const ListComponentStyle = StyleSheet.create({
     container: {
-        flex: 1,
         marginTop: StatusBar.currentHeight || 0,
+        backgroundColor:'#fff0db',
+        position: 'static',
+        height: "90%", //Esto es lo que hay que cambiar para que se vea el loading + el fondo del mismo colo (Si no es height es width)
     },
     Image:{
-        width:  150,
-        height: 150,
+        width:  '200px',
+        height: '200px',
+        alignSelf: 'center',
+        
 
+    },
+    Dish:{
+        fontSize: 20,
+       textAlign: 'center',
+       fontWeight: 'bold',
+    },
+    Eliminar:{
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'crimson',
     }
 });
 
@@ -18,7 +33,6 @@ export const ListChildStyle = StyleSheet.create({
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
-        display: 'flex',
         flexDirection: 'row',
     },
     title: {

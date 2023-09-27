@@ -64,18 +64,25 @@ export const reducer = (state = initialState, action) => {
     }
     case ActionTypes.setHealthScorePLUS: {
       let platos = 0
-      if(state.cantplatos>1)
+      if(state.cantPlatos>1)
       {
         platos = state.cantPlatos-1
       }
       else 
       {
-        platos = state.cantplatos
+        platos = state.cantPlatos
       }
       return { ...state, healthScore:  (state.healthScore * platos / state.cantPlatos) + (action.newValue / state.cantPlatos)};
     }
     case ActionTypes.setHealthScoreMINUS: {
-      return { ...state, healthScore: ((state.healthScore * (initialState.cantPlatos + 1)) - action.newValue )/(initialState.cantPlatos)};
+      if(state.cantPlatos==0)
+      {
+        return {... state, healthScore: 0};
+      }
+      else
+      {
+      return { ...state, healthScore: ((state.healthScore * (state.cantPlatos + 1) - (action.newValue ))/state.cantPlatos)};
+      }
     }
     default: {
       return state;

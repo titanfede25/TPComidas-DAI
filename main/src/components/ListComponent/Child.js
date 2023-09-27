@@ -22,13 +22,28 @@ const Child = ({route, navigation}) => {
     return (
         <View key={dish.id}>
             <TouchableOpacity onPress={()=>{navigation.goBack();}}><Text>volver</Text></TouchableOpacity>
+            <Text style={styles.NombrePlato}>{dish.title}</Text>
+            <br></br>
             <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
-            <Text>Nombre: {dish.title}</Text>
-            <Text>Precio: USD{dish.pricePerServing}</Text>
-            <Text>Tiempo en preparación: {dish.readyInMinutes} minutos</Text>
-            <Text>Vegano: {vegan(dish.vegan)}</Text>
-            <Text>HealthScore: {dish.healthScore}</Text>
-            <TouchableOpacity onPress={()=>{
+            
+
+            <View style={styles.ViewcitaEnLinea}>
+            <Text style={styles.Titulo}>Precio:</Text><Text style={styles.Precio}> USD{dish.pricePerServing}</Text>
+            </View>
+
+            <Text style={styles.Titulo}>Tiempo en preparación: {dish.readyInMinutes} minutos</Text>
+
+            <View style={styles.ViewcitaEnLinea}>
+            <Text style={styles.Vegano}>Vegano:</Text><Text style= {styles.Titulo}> {vegan(dish.vegan)}</Text>
+            </View>
+
+            <View style={styles.ViewcitaEnLinea}>
+            <Text style={styles.HealthScore}>HealthScore:</Text><Text style={styles.Titulo}> {dish.healthScore}</Text>
+            </View>
+
+
+            <View style={styles.ContenedorBoton}>
+            <TouchableOpacity style={styles.button} onPress={()=>{
                 if(IsOnMenu(dish, contextState.platos)){
                     navigation.navigate('ListComponent');
                 }
@@ -61,8 +76,10 @@ const Child = ({route, navigation}) => {
                     }
                 } 
                 }}>
-                <Text>Agregar</Text>
+                <Text style={styles.buttonText}>Agregar</Text>
             </TouchableOpacity>
+            </View>
+            <br></br>
             <Info></Info>
         </View>
     )
@@ -93,7 +110,47 @@ export default Child;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor:'#012245',
+      backgroundColor:'#fff0db',
     },
-    
+    Titulo:{
+        fontWeight: 'bold',
+        fontSize: 20, 
+    },
+    Precio:{
+        color: '#6fa042',
+        fontSize: 20,
+      },
+      Vegano:{
+        color: '#6fa042',
+        fontWeight: 'bold',
+        fontSize: 20,
+      },
+      ViewcitaEnLinea:{
+        flexDirection: "row",
+      },
+      HealthScore: {
+        color: '#a0d150',
+        fontWeight: 'bold',
+        fontSize: 20, 
+      },
+      NombrePlato:{
+        fontWeight: 'bold',
+        fontSize: 20, 
+        textAlign: 'center',
+      },
+      button: {
+        backgroundColor: '#6fa042',
+        padding: 10,
+        borderRadius: 5,
+        width: '5%',
+        
+      },
+      buttonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+      ContenedorBoton: {
+        alignItems: 'center',
+      }
   });
