@@ -19,6 +19,7 @@ const MenuSearch = ({navigation}) => {
 
     return (
         <View>
+          <br></br>
             <View style={styles.ViewcitaEnLinea}>
             <TextInput style={styles.TextInput}
                 placeholder="Ingresa aqui el plato que quieras buscar"
@@ -43,15 +44,16 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#6fa042',
         padding: 10,
-        width: '5%',
+        width: '20%',
       },
       buttonText: {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
+        width: '100%',
       },
       TextInput:{
-        width: '95%',
+        width: '80%',
         backgroundColor: 'white',
         borderWidth: 1,
         borderColor: 'gray',

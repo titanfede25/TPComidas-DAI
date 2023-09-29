@@ -33,7 +33,7 @@ const SearchResult = ({ route, navigation }) => {
                     {dishes.map((dish) => {
                         return (
                             
-                            <View key={dish.id}>
+                            <View key={dish.id} style={styles.fondo}>
                                 
                                 <Text style={ListComponentStyle.Dish}>{dish.title}</Text>
                                 <br></br>
@@ -70,5 +70,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
+    fondo: {
+        backgroundColor: '#fff0db'
+    }
 });
 

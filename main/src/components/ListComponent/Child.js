@@ -20,13 +20,13 @@ const Child = ({route, navigation}) => {
     }, [])
     
     return (
-        <View key={dish.id}>
-            <TouchableOpacity onPress={()=>{navigation.goBack();}}><Text>volver</Text></TouchableOpacity>
+        <View key={dish.id} style={styles.container}>
+            <TouchableOpacity onPress={()=>{navigation.goBack();}}><Image style={styles.flecha} source={('../../../assets/flechita.png')}></Image></TouchableOpacity>
             <Text style={styles.NombrePlato}>{dish.title}</Text>
             <br></br>
             <Image style={ListComponentStyle.Image} source={{uri: dish.image}}/>
             
-
+            <br></br>
             <View style={styles.ViewcitaEnLinea}>
             <Text style={styles.Titulo}>Precio:</Text><Text style={styles.Precio}> USD{dish.pricePerServing}</Text>
             </View>
@@ -41,7 +41,7 @@ const Child = ({route, navigation}) => {
             <Text style={styles.HealthScore}>HealthScore:</Text><Text style={styles.Titulo}> {dish.healthScore}</Text>
             </View>
 
-
+            <br></br>
             <View style={styles.ContenedorBoton}>
             <TouchableOpacity style={styles.button} onPress={()=>{
                 if(IsOnMenu(dish, contextState.platos)){
@@ -76,6 +76,7 @@ const Child = ({route, navigation}) => {
                     }
                 } 
                 }}>
+                    
                 <Text style={styles.buttonText}>Agregar</Text>
             </TouchableOpacity>
             </View>
@@ -119,6 +120,7 @@ const styles = StyleSheet.create({
     Precio:{
         color: '#6fa042',
         fontSize: 20,
+        fontWeight: 'bold',
       },
       Vegano:{
         color: '#6fa042',
@@ -142,15 +144,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#6fa042',
         padding: 10,
         borderRadius: 5,
-        width: '5%',
+        width: '40%',
         
       },
       buttonText: {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
+        width: '100%',
       },
       ContenedorBoton: {
         alignItems: 'center',
+      },
+      flecha: {
+        width: 50,
+        height: 50,
       }
+
   });

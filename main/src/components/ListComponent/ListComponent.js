@@ -40,7 +40,7 @@ const ListComponent = ({ navigation }) => {
                                     
                                 </TouchableOpacity>
                                 <br></br>
-                                <TouchableOpacity><Text style={ListComponentStyle.Eliminar}>Eliminar</Text></TouchableOpacity>
+                                
                                 <br></br><br></br>
 
 

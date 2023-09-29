@@ -5,12 +5,15 @@ export const ListComponentStyle = StyleSheet.create({
         marginTop: StatusBar.currentHeight || 0,
         backgroundColor:'#fff0db',
         position: 'static',
-        height: "90%", //Esto es lo que hay que cambiar para que se vea el loading + el fondo del mismo colo (Si no es height es width)
+        height: "75%", //Esto es lo que hay que cambiar para que se vea el loading + el fondo del mismo colo (Si no es height es width)
     },
     Image:{
         width:  '200px',
         height: '200px',
         alignSelf: 'center',
+        borderWidth: 7,
+        borderColor: '#905010',
+        borderRadius:7
         
 
     },

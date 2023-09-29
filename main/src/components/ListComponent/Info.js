@@ -23,10 +23,11 @@ const Info = () => {
         <View style={styles.ViewcitaEnLinea}>
         <Text style={styles.HealthScore}>HealthScore </Text><Text style={styles.TituloFooter}>promedio: {contextState?.healthScore}</Text>
         </View>
-
+        <br></br>
         <Text style={styles.TituloFooter}>Platos seleccionados: </Text>
+        <br></br>
         {contextState?.platos.map((dish)=>{
-          return(<Text key={dish.id}>{dish.title}. {vegan(dish.vegan)} ${dish.pricePerServing} <TouchableOpacity onPress={()=>{
+          return(<Text style={styles.TituloFooter} key={dish.id}>{dish.title}. {vegan(dish.vegan)}<Text style={styles.TituloFooter}>Precio:</Text><Text style={styles.Precio}> ${dish.pricePerServing}</Text> <TouchableOpacity style={styles.Eliminar} onPress={()=>{
             setContextState({ newValue: dish.pricePerServing, type: "SET_PRECIOTOTALMINUS" }); 
             setContextState({type: "SET_CANTPLATOSMINUS" }); 
             setContextState({ newValue: dish.title, type: "SET_PLATOSMINUS" }); 
@@ -37,7 +38,8 @@ const Info = () => {
               setContextState({ type: "SET_CANTPLATOSNOVEGANOSMINUS" }); 
             }
             setContextState({ newValue: dish.healthScore, type: "SET_HEALTHSCOREMINUS" }); 
-          }}><Text>Eliminar</Text></TouchableOpacity></Text>)         
+          }}><Text>Eliminar</Text></TouchableOpacity></Text>)  
+                 
         })}
         </ View >
     )
@@ -46,10 +48,10 @@ const Info = () => {
 export default Info;
 const vegan = (vegan) => {
   if(vegan === true){
-      return(<Text>Vegano.</Text>)
+      return(<Text style={styles.Vegano}>Vegano.</Text>)
   }
   else{
-      return(<Text>No vegano.</Text>)
+      return(<Text style={styles.NoVegano}>No vegano.</Text>)
   }
 }
 const styles = StyleSheet.create({
@@ -59,11 +61,11 @@ const styles = StyleSheet.create({
   },
   TituloFooter:{
     fontWeight: 'bold',
-    fontSize: 20,  
+    fontSize: '92%',  
 },
 TituloFooterConSubrayado:{
   fontWeight: 'bold',
-  fontSize: 20,
+  fontSize: '92%',
   textDecorationLine: "underline",
 },
 Precio:{
@@ -72,12 +74,12 @@ Precio:{
 Vegano:{
   color: '#6fa042',
   fontWeight: 'bold',
-  fontSize: 20,
+  fontSize: '92%',
 },
 NoVegano:{
   color: '#85461e',
   fontWeight: 'bold',
-  fontSize: 20,
+  fontSize: '92%',
 },
 ViewcitaEnLinea:{
   flexDirection: "row",
@@ -85,7 +87,10 @@ ViewcitaEnLinea:{
 HealthScore: {
   color: '#a0d150',
   fontWeight: 'bold',
-  fontSize: 20, 
+  fontSize: '92%', 
 },
+Eliminar:{
+  color:'crimson'
+}
   
 });
